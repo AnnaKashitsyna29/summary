@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+    width: 90%;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    position: relative;
+    animation: titlePulse 2s infinite alternate;
+}
+
+@keyframes titlePulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.project-btn {
+    display: inline-block;
+    position: relative;
+    padding: 1.5rem 3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.btn-1 {
+    background: linear-gradient(45deg, #FF416C, #FF4B2B);
+}
+
+.btn-2 {
+    background: linear-gradient(45deg, #38ef7d, #11998e);
+}
+
+.btn-3 {
+    background: linear-gradient(45deg, #4A00E0, #8E2DE2);
+}
+
+.project-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+    z-index: -1;
+    transition: all 0.4s ease;
+    opacity: 0;
+}
+
+.project-btn:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+    letter-spacing: 2px;
+}
+
+.project-btn:hover::before {
+    opacity: 1;
+}
+
+.project-btn:active {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* Individual button animations */
+.btn-1:hover {
+    background: linear-gradient(45deg, #FF4B2B, #FF416C);
+}
+
+.btn-2:hover {
+    background: linear-gradient(45deg, #11998e, #38ef7d);
+}
+
+.btn-3:hover {
+    background: linear-gradient(45deg, #8E2DE2, #4A00E0);
+}
+
+/* Button text styling */
+.btn-text {
+    position: relative;
+    z-index: 2;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.project-btn:hover .btn-text {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Ripple effect on click */
+.project-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -1;
+}
+
+.project-btn:active::after {
+    width: 300px;
+    height: 300px;
+    transition: width 0s, height 0s;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .project-btn {
+        padding: 1.2rem 2rem;
+        font-size: 1rem;
+        max-width: 300px;
+    }
+    
+    .links-container {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.7rem;
+        margin-bottom: 2rem;
+    }
+    
+    .project-btn {
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .links-container {
+        gap: 1rem;
+    }
+}
